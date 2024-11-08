@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estágiarios da Bola</title>
+    <link rel="icon" href="/static/imagens/Logo site icone2.png" type="image/png">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+
+        <div class="logo-container">
+            <img src="/static/imagens/Logo site.png" alt="Logo" class="logo">
+            <h1>Estagiários da Bola</h1>
+        </div>
+
+        <!-- Ícone do menu -->
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Opções de Login -->
+        <div class="auth-links">
+            <a href="/login">Login</a>
+        </div>
+        
+
+        <!-- Menu lateral expansível -->
+        <nav class="side-menu" id="sideMenu">
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li>
+                    <a href="#">Futebol</a>
+                    <ul class="submenu">
+                        <li><a href="#">Athletico - PR</a></li>
+                        <li><a href="#">Atlético - GO</a></li>
+                        <li><a href="#">Atlético - MG</a></li>
+                        <li><a href="#">Bahia</a></li>
+                        <li><a href="#">Botafogo</a></li>
+                        <li><a href="#">Bragantino</a></li>
+                        <li><a href="/Corinthians">Corinthians</a></li>
+                        <li><a href="#">Criciúma</a></li>
+                        <li><a href="#">Cruzeiro</a></li>
+                        <li><a href="/Cuiaba">Cuiabá</a></li>
+                        <li><a href="#">Flamengo</a></li>
+                        <li><a href="#">Fluminense</a></li>
+                        <li><a href="#">Fortaleza</a></li>
+                        <li><a href="#">Grêmio</a></li>
+                        <li><a href="/Internacional">Internacional</a></li>
+                        <li><a href="#">Juventude</a></li>
+                        <li><a href="#">Palmeiras</a></li>
+                        <li><a href="#">São Paulo</a></li>
+                        <li><a href="#">Vasco</a></li>
+                        <li><a href="#">Vitória</a></li>
+                    </ul>
+                </li>    
+                <!-- <li><a href="#">Basquete</a></li>
+                <li><a href="#">Vôlei</a></li>
+                <li><a href="#">Mais Esportes</a></li> -->
+            </ul>
+        </nav>
+
+        
+    </header>
+
+    <script>
+        // Adiciona eventos para o escudo
+        const shieldToggle = document.getElementById('shieldToggle');
+        const shieldMenu = document.getElementById('shieldMenu');
+        
+        shieldToggle.addEventListener('mouseover', () => {
+            shieldMenu.style.display = 'block';
+        });
+        
+        shieldToggle.addEventListener('mouseout', () => {
+            shieldMenu.style.display = 'none';
+        });
+        
+        shieldMenu.addEventListener('mouseover', () => {
+            shieldMenu.style.display = 'block';
+        });
+        
+        shieldMenu.addEventListener('mouseout', () => {
+            shieldMenu.style.display = 'none';
+        });
+    </script>
+
+    <script>
+        // Função para abrir/fechar o menu
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            const toggle = document.getElementById('menuToggle');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('open');
+        }
+
+        // Adiciona eventos para abrir/fechar o menu
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuToggle.addEventListener('mouseover', () => {
+            sideMenu.classList.add('active');
+        });
+
+        sideMenu.addEventListener('mouseover', () => {
+            sideMenu.classList.add('active');
+        });
+
+        menuToggle.addEventListener('mouseout', () => {
+            sideMenu.classList.remove('active');
+        });
+
+        sideMenu.addEventListener('mouseout', () => {
+            sideMenu.classList.remove('active');
+        });
+    </script>
+
+    <section class="carrossel">
+        <div class="carousel-container">
+            <div class="slide active">
+                <img src="/static/imagens/Cbf_Foto.JPG" alt="Notícia Destaque">
+                <div class="texto-destaque">
+                    <h2>Confederação Brasileira de Futebol</h2>
+                    <p>CBF enfrenta criticas de torcidas.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="/static/imagens/CR7.JPG.jpg" alt="Cristiano Ronaldo">
+                <div class="texto-destaque">
+                    <h2>Cristiano Ronaldo</h2>
+                    <p>O ídolo português segue provando seu talento, quebrando recordes e encantando fãs ao redor do mundo.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="/static/imagens/Messi.JPG" alt="Messi">
+                <div class="texto-destaque">
+                    <h2>Messi</h2>
+                    <p>Lionel Messi faz história mais uma vez e quebra novo recorde no futebol mundial!</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="/static/imagens/monumental_nunes.JPG" alt="Final da Libertadores">
+                <div class="texto-destaque">
+                    <h2>Final da Libertadores</h2>
+                    <p>Conmebol escolhe estádio da final da Copa Libertadores.</p>
+                </div>
+            </div>
+
+            <!-- Setas de navegação -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <script>
+        // Carrossel
+        let currentIndex = 0; // Índice da slide atual
+        const slides = document.querySelectorAll('.slide'); // Seleciona todas as slides
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active'); // Remove a classe ativa
+                slide.style.display = 'none'; // Esconde a slide
+            });
+
+            slides[index].style.display = 'block'; // Mostra a slide atual
+            slides[index].classList.add('active'); // Adiciona a classe ativa
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length; // Avança para a próxima slide
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Volta para a slide anterior
+            showSlide(currentIndex);
+        }
+
+        // Inicializa o carrossel exibindo a primeira slide
+        showSlide(currentIndex);
+
+        // Adiciona eventos para as setas
+        document.querySelector('.next').addEventListener('click', nextSlide);
+        document.querySelector('.prev').addEventListener('click', prevSlide);
+
+        // Transição automática a cada 10 segundos (opcional)
+        setInterval(nextSlide, 10000);
+    </script>
+
+
+    <script>
+    // FILTRO DE PESQUISA DE TIMES NO CADASTRO
+    document.addEventListener('DOMContentLoaded', function () {
+    const teams = [
+        "Corinthians", "Palmeiras", "Flamengo", "São Paulo", "Santos",
+        "Grêmio", "Internacional", "Cruzeiro", "Vasco", "Botafogo",
+        "Fluminense", "Atlético-MG", "Bahia", "Atlético-PR", "Fortaleza",
+        "Sport", "Ceará", "Goiás", "Coritiba", "Bragantino"
+    ];
+
+    const searchInput = document.getElementById('team-search');
+    const suggestionsBox = document.getElementById('suggestions');
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        suggestionsBox.innerHTML = ''; // Limpa sugestões anteriores
+        if (query) {
+            const filteredTeams = teams.filter(team => team.toLowerCase().includes(query));
+            if (filteredTeams.length > 0) {
+                suggestionsBox.style.display = 'block'; // Mostra a caixa de sugestões
+                filteredTeams.forEach(team => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.classList.add('suggestion-item');
+                    suggestionItem.textContent = team;
+                    suggestionsBox.appendChild(suggestionItem);
+
+                    // Ao clicar na sugestão, preencher o campo de pesquisa
+                    suggestionItem.addEventListener('click', function () {
+                        searchInput.value = team; // Preenche o campo com o time
+                        suggestionsBox.style.display = 'none'; // Esconde sugestões
+                    });
+                });
+            } else {
+                suggestionsBox.style.display = 'none'; // Esconde se não houver sugestões
+            }
+        } else {
+            suggestionsBox.style.display = 'none'; // Esconde se o campo estiver vazio
+        }
+    });
+
+    // Esconder a caixa de sugestões ao clicar fora dela
+    document.addEventListener('click', function (e) {
+        if (!suggestionsBox.contains(e.target) && e.target !== searchInput) {
+            suggestionsBox.style.display = 'none'; // Esconde se clicar fora
+        }
+    });
+});
+
+    </script>
+
+    <main>
+        <section class="noticias-principais">
+            <article class="noticia">
+                <img src="/static/imagens/flamengo.JPG" alt="Flamengo 1x1 Bahia">
+                <div class="conteudo-noticia">
+                    <h3>Flamengo 1x1 Bahia</h3>
+                    <p>Flamengo e Bahia ficam no empate pela 10ª rodada do Brasileirão.</p>
+                    <a href="#">Leia Mais</a>
+                </div>
+            </article>
+
+            <article class="noticia">
+                <img src="/static/imagens/Romero_Foto.JPG" alt="Notícia 2">
+                <div class="conteudo-noticia">
+                    <h3>Notícia 2</h3>
+                    <p>Resumo da notícia esportiva 2.</p>
+                    <a href="#">Leia Mais</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="tabela-campeonato">
+            <h2>Brasileirão 2024</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Time</th>
+                        <th>Pts</th>
+                        <th>J</th>
+                        <th>V</th>
+                        <th>E</th>
+                        <th>D</th>
+                        <th>GP</th>
+                        <th>Últimos Jogos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo de uma linha (substitua com os times reais) -->
+                    <tr>
+                        <td>1</td>
+                        <td>Botafogo</td>
+                        <td>61</td>
+                        <td>30</td>
+                        <td>18</td>
+                        <td>7</td>
+                        <td>5</td>
+                        <td>48</td>
+                        <td>
+                            <span class="bola cinza"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Palmeiras</td>
+                        <td>57</td>
+                        <td>29</td>
+                        <td>17</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>45</td>
+                        <td>
+                            <span class="bola verde"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Fortaleza</td>
+                        <td>56</td>
+                        <td>30</td>
+                        <td>16</td>
+                        <td>8</td>
+                        <td>6</td>
+                        <td>39</td>
+                        <td>
+                            <span class="bola cinza"></span>
+                            <span class="bola vermelho"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Flamengo</td>
+                        <td>51</td>
+                        <td>29</td>
+                        <td>15</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>45</td>
+                        <td>
+                            <span class="bola verde"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola vermelho"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>São Paulo</td>
+                        <td>50</td>
+                        <td>30</td>
+                        <td>15</td>
+                        <td>5</td>
+                        <td>10</td>
+                        <td>41</td>
+                        <td>
+                            <span class="bola verde"></span>
+                            <span class="bola vermelho"></span>
+                            <span class="bola verde"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Bahia</td>
+                        <td>46</td>
+                        <td>30</td>
+                        <td>13</td>
+                        <td>7</td>
+                        <td>10</td>
+                        <td>40</td>
+                        <td>
+                            <span class="bola verde"></span>
+                            <span class="bola vermelho"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Internacional</td>
+                        <td>46</td>
+                        <td>28</td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>6</td>
+                        <td>37</td>
+                        <td>
+                            <span class="bola cinza"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Cruzeiro</td>
+                        <td>44</td>
+                        <td>30</td>
+                        <td>12</td>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>36</td>
+                        <td>
+                            <span class="bola cinza"></span>
+                            <span class="bola vermelho"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Atletico - MG</td>
+                        <td>41</td>
+                        <td>29</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>8</td>
+                        <td>41</td>
+                        <td>
+                            <span class="bola cinza"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Vasco da Gama</td>
+                        <td>37</td>
+                        <td>29</td>
+                        <td>10</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>32</td>
+                        <td>
+                            <span class="bola cinza"></span>
+                            <span class="bola cinza"></span>
+                            <span class="bola vermelho"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Criciúma</td>
+                        <td>36</td>
+                        <td>30</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>612</td>
+                        <td>37</td>
+                        <td>
+                            <span class="bola vermelho"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Grêmio</td>
+                        <td>35</td>
+                        <td>29</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>14</td>
+                        <td>33</td>
+                        <td>
+                            <span class="bola cinza"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola vermelho"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Bragantino</td>
+                        <td>34</td>
+                        <td>29</td>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>34</td>
+                        <td>
+                            <span class="bola cinza"></span>
+                            <span class="bola cinza"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Juventude</td>
+                        <td>34</td>
+                        <td>29</td>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>34</td>
+                        <td>
+                            <span class="bola vermelho"></span>
+                            <span class="bola cinza"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Fluminense</td>
+                        <td>33</td>
+                        <td>29</td>
+                        <td>9</td>
+                        <td>6</td>
+                        <td>14</td>
+                        <td>24</td>
+                        <td>
+                            <span class="bola vermelho"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola verde"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Corinthians</td>
+                        <td>32</td>
+                        <td>30</td>
+                        <td>7</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>34</td>
+                        <td>
+                            <span class="bola vermelho"></span>
+                            <span class="bola cinza"></span>
+                            <span class="bola verde"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>Athletico - PR</td>
+                        <td>31</td>
+                        <td>28</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>13</td>
+                        <td>29</td>
+                        <td>
+                            <span class="bola vermelho"></span>
+                            <span class="bola vermelho"></span>
+                            <span class="bola vermelho"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>Vitória</td>
+                        <td>29</td>
+                        <td>29</td>
+                        <td>8</td>
+                        <td>5</td>
+                        <td>16</td>
+                        <td>32</td>
+                        <td>
+                            <span class="bola verde"></span>
+                            <span class="bola vermelho"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Cuiabá</td>
+                        <td>27</td>
+                        <td>29</td>
+                        <td>6</td>
+                        <td>9</td>
+                        <td>14</td>
+                        <td>25</td>
+                        <td>
+                            <span class="bola vermelho"></span>
+                            <span class="bola verde"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Atlético - GO</td>
+                        <td>22</td>
+                        <td>30</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>18</td>
+                        <td>22</td>
+                        <td>
+                            <span class="bola verde"></span>
+                            <span class="bola vermelho"></span>
+                            <span class="bola cinza"></span>
+                        </td>
+                    </tr>
+
+                    <!-- Repetir as linhas para os 20 times -->
+                </tbody>
+            </table>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Estágiarios da Bola. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,372 @@
+/* Garantindo que o conteúdo principal comece abaixo do cabeçalho */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #049918;
+    padding-top: 60px; /* Adiciona espaço para o cabeçalho */
+}
+
+/* Estilo do cabeçalho */
+header {
+    display: flex;
+    justify-content: center; /* Centraliza logo e título */
+    align-items: center;
+    padding: 10px; /* Aumenta o espaço interno do cabeçalho */
+    background-color: #049918;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1002;
+    height: 50px; /* Define a altura do cabeçalho */
+}
+
+/* Estilo do logo e título no centro */
+header .logo {
+    margin-right: 10px; /* Espaço entre logo e título */
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0; /* Remove espaçamento ao redor do título */
+}
+
+/* Estilos da opção de login */
+.auth-links {
+    position: absolute;
+    right: 20px; /* Coloca o login no canto direito */
+    top: 50%;
+    transform: translateY(-50%); /* Alinha verticalmente ao centro */
+}
+
+.auth-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px; /* Espaço entre os links */
+}
+
+.auth-links a:hover {
+    text-decoration: underline; /* Estilo de hover */
+}
+
+/* Estilos do menu de hambúrguer */
+.menu-toggle {
+    position: absolute;
+    left: 20px; /* Mantém o menu no canto esquerdo */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bar {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+.menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #0057a3;
+    padding-top: 60px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    display: none; /* Esconde o menu inicialmente */
+}
+
+.side-menu ul {
+    list-style-type: none; /* Remove os marcadores de lista */
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li {
+    margin: 10px 0; /* Espaçamento entre os itens */
+    width: 100%;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.side-menu.active {
+    display: block; /* Mostra o menu quando ativo */
+    transform: translateX(0);
+}
+
+/* Estilo para o submenu (inicialmente oculto e posicionado à direita) */
+.side-menu ul li {
+    position: relative; /* Necessário para o submenu ser posicionado em relação ao item pai */
+}
+
+.side-menu ul li ul.submenu {
+    display: none; /* Esconde o submenu por padrão */
+    position: absolute; /* Posiciona o submenu fora do fluxo normal */
+    top: 0;
+    left: 100%; /* Move o submenu para a direita do menu principal */
+    width: 200px; /* Define a largura do submenu */
+    max-height: 300px; /* Altura máxima do submenu */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical se necessário */
+    background-color: #004080; /* Cor de fundo do submenu */
+    padding-left: 0; /* Remove o padding padrão */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+}
+
+.side-menu ul li ul.submenu::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+}
+
+.side-menu ul li ul.submenu::-webkit-scrollbar-thumb {
+    background-color: #0057a3; /* Cor da barra de rolagem */
+    border-radius: 5px; /* Arredonda a barra */
+}
+
+.side-menu ul li:hover ul.submenu {
+    display: block; /* Exibe o submenu quando passar o mouse no item do menu */
+}
+
+.side-menu ul li ul.submenu li {
+    margin: 0; /* Remove a margem dos itens do submenu */
+}
+
+.side-menu ul li ul.submenu li a {
+    color: white; /* Cor branca para o texto do submenu */
+    padding: 10px; /* Espaçamento interno dos itens do submenu */
+    display: block; /* Exibe os links em bloco */
+    font-size: 16px; /* Tamanho de fonte do submenu */
+}
+
+.side-menu ul li ul.submenu li a:hover {
+    background-color: #0057a3; /* Cor de fundo ao passar o mouse no submenu */
+}
+
+
+
+.main-corinthians {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Grid de notícias principal */
+.grid-noticias {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Bloco esquerdo maior e dois blocos à direita */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o grid */
+    padding: 20px;
+}
+
+/* Dispositivos médios (tablets) */
+@media (max-width: 1024px) {
+    .grid-noticias {
+        grid-template-columns: 1fr; /* Uma coluna em dispositivos médios */
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .noticia-principal img {
+        height: 300px; /* Ajuste da altura das imagens principais */
+    }
+
+    .video-corinthians iframe {
+        max-width: 480px;
+        height: 270px;
+    }
+}
+
+/* Para dispositivos móveis */
+@media (max-width: 768px) {
+    .side-menu {
+        width: 180px; /* Ocupa 80% da largura da tela no modo mobile */
+    }
+    
+    /* Quando o menu está ativo */
+    .side-menu.active {
+        left: 0; /* Mostra o menu deslizando para a direita */
+    }
+
+    /* Ajusta o conteúdo principal para não ser coberto pelo menu */
+    .main-content {
+        margin-left: 0;
+    }
+
+    .video-corinthians iframe {
+        max-width: 100%; /* Usa 100% da largura no celular */
+        height: auto;
+    }
+
+}
+
+
+/* Estilo da notícia principal à esquerda (bloco maior) */
+/* Estilo da notícia principal à esquerda (bloco maior) */
+.noticia-principal {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.noticia-principal img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.noticia-principal:hover img {
+    transform: scale(1.02);
+}
+
+.noticia-principal .conteudo-noticia {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    
+}
+
+.noticia-principal h2 {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+    transform-origin: left; /* O ponto de origem do aumento será à esquerda */
+}
+
+.noticia-principal p {
+    font-size: 14px;
+    margin-top: 5px;
+    transition: transform 0.3s ease; /* Adiciona transição suave para a prévia */
+    transform-origin: left; /* O ponto de origem do aumento será à esquerda */
+}
+
+.noticia-principal:hover h2, 
+.noticia-principal:hover p {
+    transform: scale(1.1); /* Aumenta tanto o título quanto a prévia junto com a imagem */
+}
+
+/* Bloco de notícias secundárias à direita */
+.bloco-noticias-direita {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+
+.noticia-secundaria {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.noticia-secundaria img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.noticia-secundaria:hover img {
+    transform: scale(1.02);
+}
+
+.noticia-secundaria h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+    transform-origin: left; /* O ponto de origem do aumento será a esquerda */
+}
+
+.noticia-secundaria:hover h3 {
+    transform: scale(1.1); /* Aumenta o título junto com a imagem */
+}
+
+
+.noticia-secundaria p {
+    display: none; /* Oculta as prévias dos blocos menores */
+}
+
+/* Adicionando um hover para as imagens */
+.noticia-principal a, .noticia-secundaria a {
+    display: block;
+    text-decoration: none;
+    color: inherit; /* Mantém a cor do texto original */
+}
+
+
+
+/* Estilo da seção de vídeos */
+.video-corinthians {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente se necessário */
+    margin: 40px auto; /* Margens superior e inferior, centraliza horizontalmente */
+    width: 100%; /* Garante que o contêiner ocupe toda a largura disponível */
+    max-width: 1200px; /* Limita a largura máxima do contêiner */
+    padding: 20px; /* Adiciona um padding interno se necessário */
+    background-color: #f4f4f4; /* Fundo para melhor visualização */
+    border-radius: 8px; /* Para um efeito visual mais agradável */
+}
+
+
+.titulo-video {
+    font-size: 24px; /* Tamanho da fonte do título */
+    font-weight: bold; /* Negrito para o título */
+    text-align: center; /* Centraliza o texto do título */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+.video-corinthians iframe {
+    width: 100%; /* O vídeo ocupa toda a largura do contêiner */
+    height: 600px; /* Aumenta a altura do vídeo */
+    max-width: 100%; /* Garante que o vídeo não exceda a largura do contêiner */
+    border-radius: 8px; /* Arredonda os cantos do vídeo para combinar com o contêiner */
+}

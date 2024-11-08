@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Club Internacional</title>
+    <link rel="icon" href="/static/imagens/Logo site icone2.png" type="image/png">
+    <link rel="stylesheet" href="/static/style-internacional.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>    
+        <div class="logo">
+          <!--  <img src="/static/imagens/Corinthians-escudo.png" alt="Corinthians Logo" width="50"> -->
+        </div>
+        <h1>Sport Club Internacional</h1>
+
+         <!-- Opções de Login -->
+         <div class="auth-links">
+             <a href="/login">Login</a>
+        </div>
+
+        <!-- Ícone do menu -->
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Menu lateral expansível -->
+        <nav class="side-menu" id="sideMenu">
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li>
+                    <a href="#">Futebol</a>
+                    <ul class="submenu">
+                        <li><a href="#">Athletico - PR</a></li>
+                        <li><a href="#">Atlético - GO</a></li>
+                        <li><a href="#">Atlético - MG</a></li>
+                        <li><a href="#">Bahia</a></li>
+                        <li><a href="#">Botafogo</a></li>
+                        <li><a href="#">Bragantino</a></li>
+                        <li><a href="/corinthians">Corinthians</a></li>
+                        <li><a href="#">Criciúma</a></li>
+                        <li><a href="#">Cruzeiro</a></li>
+                        <li><a href="#">Cuiabá</a></li>
+                        <li><a href="#">Flamengo</a></li>
+                        <li><a href="#">Fluminense</a></li>
+                        <li><a href="#">Fortaleza</a></li>
+                        <li><a href="#">Grêmio</a></li>
+                        <li><a href="#">Internacional</a></li>
+                        <li><a href="#">Juventude</a></li>
+                        <li><a href="#">Palmeiras</a></li>
+                        <li><a href="#">São Paulo</a></li>
+                        <li><a href="#">Vasco</a></li>
+                        <li><a href="#">Vitória</a></li>
+                    </ul>
+                </li>    
+                <!-- <li><a href="#">Basquete</a></li>
+                <li><a href="#">Vôlei</a></li>
+                <li><a href="#">Mais Esportes</a></li> -->
+            </ul>
+        </nav>
+
+    </header>
+
+    <script>
+        // Função para abrir/fechar o menu
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            const toggle = document.getElementById('menuToggle');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('open');
+        }
+
+        // Adiciona eventos para abrir/fechar o menu
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuToggle.addEventListener('mouseover', () => {
+            sideMenu.classList.add('active');
+        });
+
+        sideMenu.addEventListener('mouseover', () => {
+            sideMenu.classList.add('active');
+        });
+
+        menuToggle.addEventListener('mouseout', () => {
+            sideMenu.classList.remove('active');
+        });
+
+        sideMenu.addEventListener('mouseout', () => {
+            sideMenu.classList.remove('active');
+        });
+
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                sideMenu.classList.remove('active');
+            }
+        });
+    </script>
+
+    <!-- Conteúdo principal -->
+    <main class="main-corinthians">
+
+        <section class="grid-noticias">
+            <!-- Notícia principal com imagem grande à esquerda -->
+            <div class="noticia-principal">
+                <a href="pagina-noticia-principal.html">
+                    <img src="/static/imagens/internacional/noticia2.jpg" alt="Notícia Principal">
+                    <div class="conteudo-noticia">
+                        <h2>Título da Notícia Principal</h2>
+                        <p>Descrição curta da notícia principal.</p>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Blocos de notícias à direita -->
+            <div class="bloco-noticias-direita">
+                <div class="noticia-secundaria">
+                    <a href="pagina-noticia-secundaria1.html">
+                        <img src="/static/imagens/internacional/noticia1.png" alt="Notícia Secundária 1">
+                        <h3>Título da Notícia Secundária 1</h3>
+                        <p>Prévia da Notícia Secundária 1</p>
+                    </a>
+                </div>
+                <div class="noticia-secundaria">
+                    <a href="pagina-noticia-secundaria2.html">
+                        <img src="/static/imagens/internacional/noticia3.jfif" alt="Notícia Secundária 2">
+                        <h3>Título da Notícia Secundária 2</h3>
+                        <p>Prévia da Notícia Secundária 2</p>
+                    </a>
+                </div>
+            </div>
+        </section> <!-- Fim da seção de notícias -->
+    
+        <div class="video-corinthians"> <!-- Seção de vídeos fora do grid -->
+            <h2 class="titulo-video">Assista aos Melhores Momentos de Corinthians x Athletico - PR</h2>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+                clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    
+    </main>
+    
+</body>
+</html>

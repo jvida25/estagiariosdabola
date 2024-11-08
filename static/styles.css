@@ -1,0 +1,691 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 60px; /* Adiciona espaço para o cabeçalho */
+}
+
+header {
+    display: flex;
+    justify-content: center; /* Centraliza logo e título */
+    align-items: center;
+    padding: 10px; /* Aumenta o espaço interno do cabeçalho */
+    background-color: #5eca87;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1002;
+    height: 50px; /* Define a altura do cabeçalho */
+}
+
+/* Estilos para o contêiner da logo e do título */
+.logo-container {
+    display: flex;
+    align-items: center; /* Alinha logo e título verticalmente */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza logo e título */
+}
+
+/* Estilos da logo */
+.logo {
+    margin-right: 10px; /* Espaço entre o logo e o título */
+    width: 50px; /* Defina a largura do logo conforme necessário */
+    height: auto; /* Mantém a proporção do logo */
+    /*flex: 1;  Permite que a logo ocupe espaço */
+    text-align: center; /* Centraliza o conteúdo dentro da div */
+}
+
+.logo-title {
+    display: flex; /* Usa flexbox para o logo e título */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Centraliza o conteúdo */
+    flex-grow: 1; /* Faz o conteúdo ocupar o espaço restante */
+}
+
+/* Estilo do título */
+h1 {
+    font-size: 28px; /* Aumenta o tamanho do título */
+    margin: 0;
+}
+
+/* Estilos do menu de hambúrguer */
+.menu-toggle {
+    position: absolute;
+    left: 20px; /* Mantém o menu no canto esquerdo */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bar {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+.menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Escondido inicialmente fora da tela */
+    width: 250px;
+    height: 100%;
+    background-color: #0057a3;
+    padding-top: 60px; /* Espaço superior para que os itens do menu não fiquem atrás do cabeçalho */
+    transition: left 0.3s ease; /* Adiciona uma transição suave */
+    z-index: 1000;
+    box-sizing: border-box; /* Garantindo que o padding seja incluído na largura total */
+}
+
+.side-menu ul {
+    list-style-type: none; /* Remove os marcadores de lista */
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li {
+    margin: 10px 0; /* Espaçamento entre os itens */
+    width: 100%;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.side-menu.active {
+    left: 0; /* Mostra o menu empurrando ele para a direita */
+}
+
+/* Estilo para o submenu (inicialmente oculto e posicionado à direita) */
+.side-menu ul li {
+    position: relative; /* Necessário para o submenu ser posicionado em relação ao item pai */
+}
+
+.side-menu ul li ul.submenu {
+    display: none; /* Esconde o submenu por padrão */
+    position: absolute; /* Posiciona o submenu fora do fluxo normal */
+    top: 0;
+    left: 100%; /* Move o submenu para a direita do menu principal */
+    width: 200px; /* Define a largura do submenu */
+    max-height: 300px; /* Altura máxima do submenu */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical se necessário */
+    background-color: #004080; /* Cor de fundo do submenu */
+    padding-left: 0; /* Remove o padding padrão */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+}
+
+.side-menu ul li ul.submenu::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+}
+
+.side-menu ul li ul.submenu::-webkit-scrollbar-thumb {
+    background-color: #0057a3; /* Cor da barra de rolagem */
+    border-radius: 5px; /* Arredonda a barra */
+}
+
+.side-menu ul li:hover ul.submenu {
+    display: block; /* Exibe o submenu quando passar o mouse no item do menu */
+}
+
+.side-menu ul li ul.submenu li {
+    margin: 0; /* Remove a margem dos itens do submenu */
+}
+
+.side-menu ul li ul.submenu li a {
+    color: white; /* Cor branca para o texto do submenu */
+    padding: 10px; /* Espaçamento interno dos itens do submenu */
+    display: block; /* Exibe os links em bloco */
+    font-size: 16px; /* Tamanho de fonte do submenu */
+}
+
+.side-menu ul li ul.submenu li a:hover {
+    background-color: #0057a3; /* Cor de fundo ao passar o mouse no submenu */
+}
+
+/* Estilos da opção de login */
+.auth-links {
+    position: absolute;
+    right: 20px; /* Coloca o login no canto direito */
+    top: 50%;
+    transform: translateY(-50%); /* Alinha verticalmente ao centro */
+}
+
+.auth-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px; /* Espaço entre os links */
+}
+
+.auth-links a:hover {
+    text-decoration: underline; /* Estilo de hover */
+}
+
+/* Estilo do carrossel */
+.carrossel {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* Alinhado com as notícias */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.carrossel img {
+    width: 100%;
+    height: auto;
+}
+
+.texto-destaque {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    width: 50%;
+}
+
+/* Estilo das setas */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000; /* Mantém as setas acima do conteúdo */
+    transition: transform 0.3s ease; /* Transição suave para o efeito de zoom */
+}
+
+.prev:hover, .next:hover {
+    transform: translateY(-50%) scale(1.1); /* Aumenta o tamanho da seta em 10% ao passar o mouse */
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Ajuste das notícias principais */
+.main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 70px;
+}
+
+.noticias-principais {
+    flex: 3;
+    max-width: 1000px; /* Alinha com o carrossel */
+    margin: 0 auto; /* Centraliza a seção */
+}
+
+.noticia {
+    display: flex;
+    align-items: flex-start; /* Alinha o conteúdo da notícia ao topo */
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    width: 100%; /* Garante que ocupe toda a largura disponível */
+}
+
+.noticia img {
+    width: 40%; /* Ajuste para que a imagem ocupe 40% da largura */
+    max-width: 300px; /* Largura máxima */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 5px;
+    margin-right: 15px; /* Espaço entre a imagem e o texto */
+    transition: transform 0.3s ease; /* Transição suave para o efeito de zoom */
+}
+
+.noticia img:hover {
+    transform: scale(1.1); /* Aumenta a imagem em 10% ao passar o mouse */
+}
+
+.noticia .conteudo-noticia {
+    flex: 1; /* Faz o conteúdo textual ocupar o restante do espaço */
+    display: flex;
+    flex-direction: column; /* Organiza os itens em coluna */
+    justify-content: space-between; /* Deixa o botão no final */
+}
+
+.noticia h3 {
+    margin: 0 0 10px; /* Margem inferior para separar o título do texto */
+    font-size: 1.5em; /* Tamanho maior para o título */
+}
+
+.noticia p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px; /* Espaço entre o texto e o botão */
+}
+
+.noticia a {
+    align-self: flex-start; /* Mantém o botão à esquerda */
+    color: #0057a3;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #0057a3;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.noticia a:hover {
+    background-color: #0057a3;
+    color: white;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #0057a3;
+    font-weight: bold;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* Estilos para a página de login */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0057a3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* Estilo do título */
+h1 {
+    font-size: 28px; /* Aumenta o tamanho do título */
+    margin: 0;
+}   
+
+.login-container button:hover {
+    background-color: #004080;
+}
+
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #0057a3;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* 
+Pagina de cadastro */
+
+.container {
+    max-width: 600px; /* Largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário */
+    padding: 20px; /* Espaçamento interno */
+    background-color: #f4f4f4;; /* Fundo branco */
+    border-radius: 5px; /* Cantos arredondados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+h2 {
+    text-align: center; /* Centraliza o título do formulário */
+    margin-bottom: 20px; /* Margem inferior */
+}
+
+form {
+    display: flex; /* Usa flexbox para o formulário */
+    flex-direction: column; /* Organiza os elementos em coluna */
+}
+
+/* Estilo para o campo de pesquisa */
+#team-search {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+/* Estilo para a caixa de sugestões */
+.suggestions-box {
+    max-width: 300px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* Escondido até que tenha sugestões */
+    position: absolute;
+    z-index: 1000;
+}
+
+/* Estilo para cada sugestão */
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+
+label {
+    margin-bottom: 5px; /* Espaço abaixo do rótulo */
+    font-weight: bold; /* Destaca os rótulos */
+}
+
+input {
+    margin-bottom: 15px; /* Espaço abaixo do campo de entrada */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda padrão */
+    border-radius: 4px; /* Cantos arredondados */
+}
+
+button {
+    padding: 10px; /* Espaçamento interno do botão */
+    background-color: #0057a3; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    border-radius: 4px; /* Cantos arredondados */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+button:hover {
+    background-color: #004494; /* Cor do botão ao passar o mouse */
+}
+
+
+
+/* Estilo da seção da tabela */
+.tabela-campeonato {
+    margin: 40px auto;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabela-campeonato h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #0057a3;
+}
+
+/* Estilo da tabela */
+.tabela-campeonato table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tabela-campeonato th,
+.tabela-campeonato td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.tabela-campeonato th {
+    background-color: #0057a3;
+    color: white;
+    font-weight: bold;
+}
+
+.tabela-campeonato tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Estilo das bolinhas do retrospecto */
+.bola {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.verde {
+    background-color: green;
+}
+
+.cinza {
+    background-color: gray;
+}
+
+.vermelho {
+    background-color: red;
+}
+
+/* Ajuste para responsividade */
+@media screen and (max-width: 768px) {
+    .tabela-campeonato {
+        overflow-x: auto; /* Adiciona rolagem horizontal */
+        width: 90%; /* Garante que o contêiner ocupe 100% da largura */
+    }
+    
+    table {
+        width: 70%; /* A tabela ocupa 100% do contêiner */
+        border-collapse: collapse; /* Colapsa as bordas para um visual mais limpo */
+    }
+    
+    th, td {
+        padding: 10px; /* Espaçamento interno nas células */
+        text-align: left; /* Alinhamento do texto à esquerda */
+    }
+    
+    /* Exemplo de larguras em porcentagens para as colunas */
+    th:nth-child(1),
+    td:nth-child(1) {
+        width: 50%; /* Largura da primeira coluna */
+    }
+    
+    th:nth-child(2),
+    td:nth-child(2) {
+        width: 25%; /* Largura da segunda coluna */
+    }
+    
+    th:nth-child(3),
+    td:nth-child(3) {
+        width: 25%; /* Largura da terceira coluna */
+    }
+
+
+    th:nth-child(4),
+    td:nth-child(4) {
+        width: 25%; /* Largura da terceira coluna */
+    }
+
+    th:nth-child(5),
+    td:nth-child(5) {
+        width: 25%; /* Largura da terceira coluna */
+    }
+
+    th:nth-child(6),
+    td:nth-child(6) {
+        width: 25%; /* Largura da terceira coluna */
+    }
+
+    th:nth-child(7),
+    td:nth-child(7) {
+        width: 25%; /* Largura da terceira coluna */
+    }
+
+
+    th:nth-child(8),
+    td:nth-child(8) {
+        width: 25%; /* Largura da terceira coluna */
+    }
+
+    th:nth-child(9),
+    td:nth-child(9) {
+    width: 20%; /* Aumente a largura da última coluna */
+    white-space: nowrap; /* Impede que o conteúdo quebre em várias linhas */
+    text-align: center; /* Centraliza horizontalmente */
+    vertical-align: middle; /* Centraliza verticalmente */
+}
+
+
+}
+
+/* Dispositivos médios (tablets) */
+@media (max-width: 1024px) {
+    .noticias-principais {
+        grid-template-columns: 1fr; /* Uma coluna em dispositivos médios */
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .noticia img {
+        height: 150px; /* Ajuste da altura das imagens principais */
+    }
+
+
+}
+
+/* Para dispositivos móveis */
+@media (max-width: 768px) {
+    .side-menu {
+        width: 180px; /* Ocupa 80% da largura da tela no modo mobile */
+    }
+    
+    /* Quando o menu está ativo */
+    .side-menu.active {
+        left: 0; /* Mostra o menu deslizando para a direita */
+    }
+
+    /* Ajusta o conteúdo principal para não ser coberto pelo menu */
+    .main-content {
+        margin-left: 0;
+    }
+
+
+}
+
+
+
