@@ -8,7 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    color: #333;
+    color: #29a30e;
     padding-top: 60px; /* Adiciona espaço para o cabeçalho */
 }
 
@@ -18,7 +18,7 @@ header {
     justify-content: center; /* Centraliza logo e título */
     align-items: center;
     padding: 10px; /* Aumenta o espaço interno do cabeçalho */
-    background-color: #333;
+    background-color: #29a30e;
     color: white;
     position: fixed;
     width: 100%;

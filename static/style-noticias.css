@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 60px; /* Adiciona espaço para o cabeçalho */
+}
+
+header {
+    display: flex;
+    justify-content: center; /* Centraliza logo e título */
+    align-items: center;
+    padding: 10px; /* Aumenta o espaço interno do cabeçalho */
+    background-color: #5eca87;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1002;
+    height: 50px; /* Define a altura do cabeçalho */
+}
+
+/* Estilos para o contêiner da logo e do título */
+.logo-container {
+    display: flex;
+    align-items: center; /* Alinha logo e título verticalmente */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza logo e título */
+}
+
+/* Estilos da logo */
+.logo {
+    margin-right: 10px; /* Espaço entre o logo e o título */
+    width: 50px; /* Defina a largura do logo conforme necessário */
+    height: auto; /* Mantém a proporção do logo */
+    /*flex: 1;  Permite que a logo ocupe espaço */
+    text-align: center; /* Centraliza o conteúdo dentro da div */
+}
+
+.logo-title {
+    display: flex; /* Usa flexbox para o logo e título */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Centraliza o conteúdo */
+    flex-grow: 1; /* Faz o conteúdo ocupar o espaço restante */
+}
+
+/* Estilo do título */
+h1 {
+    font-size: 28px; /* Aumenta o tamanho do título */
+    margin: 0;
+}
+
+/* Estilos do menu de hambúrguer */
+.menu-toggle {
+    position: absolute;
+    left: 20px; /* Mantém o menu no canto esquerdo */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bar {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+.menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Escondido inicialmente fora da tela */
+    width: 250px;
+    height: 100%;
+    background-color: #0057a3;
+    padding-top: 60px; /* Espaço superior para que os itens do menu não fiquem atrás do cabeçalho */
+    transition: left 0.3s ease; /* Adiciona uma transição suave */
+    z-index: 1000;
+    box-sizing: border-box; /* Garantindo que o padding seja incluído na largura total */
+}
+
+.side-menu ul {
+    list-style-type: none; /* Remove os marcadores de lista */
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li {
+    margin: 10px 0; /* Espaçamento entre os itens */
+    width: 100%;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.side-menu.active {
+    left: 0; /* Mostra o menu empurrando ele para a direita */
+}
+
+/* Estilo para o submenu (inicialmente oculto e posicionado à direita) */
+.side-menu ul li {
+    position: relative; /* Necessário para o submenu ser posicionado em relação ao item pai */
+}
+
+.side-menu ul li ul.submenu {
+    display: none; /* Esconde o submenu por padrão */
+    position: absolute; /* Posiciona o submenu fora do fluxo normal */
+    top: 0;
+    left: 100%; /* Move o submenu para a direita do menu principal */
+    width: 200px; /* Define a largura do submenu */
+    max-height: 300px; /* Altura máxima do submenu */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical se necessário */
+    background-color: #004080; /* Cor de fundo do submenu */
+    padding-left: 0; /* Remove o padding padrão */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+}
+
+.side-menu ul li ul.submenu::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+}
+
+.side-menu ul li ul.submenu::-webkit-scrollbar-thumb {
+    background-color: #0057a3; /* Cor da barra de rolagem */
+    border-radius: 5px; /* Arredonda a barra */
+}
+
+.side-menu ul li:hover ul.submenu {
+    display: block; /* Exibe o submenu quando passar o mouse no item do menu */
+}
+
+.side-menu ul li ul.submenu li {
+    margin: 0; /* Remove a margem dos itens do submenu */
+}
+
+.side-menu ul li ul.submenu li a {
+    color: white; /* Cor branca para o texto do submenu */
+    padding: 10px; /* Espaçamento interno dos itens do submenu */
+    display: block; /* Exibe os links em bloco */
+    font-size: 16px; /* Tamanho de fonte do submenu */
+}
+
+.side-menu ul li ul.submenu li a:hover {
+    background-color: #0057a3; /* Cor de fundo ao passar o mouse no submenu */
+}
+
+/* Estilos da opção de login */
+.auth-links {
+    position: absolute;
+    right: 20px; /* Coloca o login no canto direito */
+    top: 50%;
+    transform: translateY(-50%); /* Alinha verticalmente ao centro */
+}
+
+.auth-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px; /* Espaço entre os links */
+}
+
+.auth-links a:hover {
+    text-decoration: underline; /* Estilo de hover */
+}
+
+/* Estilos da seção de notícias */
+.noticia {
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.noticia h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.noticia .data {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.noticia img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.noticia p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.detalhes-noticia {
+    display: none;
+    font-size: 1em;
+    color: #333;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Estilos do rodapé */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    .noticia {
+        width: 95%;
+    }
+}
