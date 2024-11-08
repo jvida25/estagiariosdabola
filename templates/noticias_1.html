@@ -1,23 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport Club Internacional</title>
+    <title>Estágiarios da Bola</title>
     <link rel="icon" href="/static/imagens/Logo site icone2.png" type="image/png">
-    <link rel="stylesheet" href="/static/style-internacional.css">
+    <link rel="stylesheet" href="/static/style-noticias.css">
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header>    
-        <div class="logo">
-          <!--  <img src="/static/imagens/Corinthians-escudo.png" alt="Corinthians Logo" width="50"> -->
-        </div>
-        <h1>Sport Club Internacional</h1>
+    <header>
 
-         <!-- Opções de Login -->
-         <div class="auth-links">
-             <a href="/login">Login</a>
+        <div class="logo-container">
+            <img src="/static/imagens/Logo site.png" alt="Logo" class="logo">
+            <h1>Estagiários da Bola</h1>
         </div>
 
         <!-- Ícone do menu -->
@@ -26,6 +21,12 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
+
+        <!-- Opções de Login -->
+        <div class="auth-links">
+            <a href="/login">Login</a>
+        </div>
+        
 
         <!-- Menu lateral expansível -->
         <nav class="side-menu" id="sideMenu">
@@ -62,7 +63,9 @@
             </ul>
         </nav>
 
+        
     </header>
+
 
     <script>
         // Função para abrir/fechar o menu
@@ -92,60 +95,24 @@
         sideMenu.addEventListener('mouseout', () => {
             sideMenu.classList.remove('active');
         });
-
-        menuToggle.addEventListener('click', () => {
-            sideMenu.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-                sideMenu.classList.remove('active');
-            }
-        });
     </script>
 
-    <!-- Conteúdo principal -->
-    <main class="main-corinthians">
 
-        <section class="grid-noticias">
-            <!-- Notícia principal com imagem grande à esquerda -->
-            <div class="noticia-principal">
-                <a href="pagina-noticia-principal.html">
-                    <img src="/static/imagens/internacional/noticia2.jpg" alt="Notícia Principal">
-                    <div class="conteudo-noticia">
-                        <h2>Aniversário</h2>
-                        <p>Internacional completa 106 anos de historia.</p>
-                    </div>
-                </a>
-            </div>
-    
-            <!-- Blocos de notícias à direita -->
-            <div class="bloco-noticias-direita">
-                <div class="noticia-secundaria">
-                    <a href="pagina-noticia-secundaria1.html">
-                        <img src="/static/imagens/internacional/noticia1.png" alt="Notícia Secundária 1">
-                        <h3>Recorde de socios</h3>
-                        <p>Prévia da Notícia Secundária 1</p>
-                    </a>
-                </div>
-                <div class="noticia-secundaria">
-                    <a href="pagina-noticia-secundaria2.html">
-                        <img src="/static/imagens/internacional/noticia3.jfif" alt="Notícia Secundária 2">
-                        <h3>Estádio volta a lotar</h3>
-                        <p>Prévia da Notícia Secundária 2</p>
-                    </a>
-                </div>
-            </div>
-        </section> <!-- Fim da seção de notícias -->
-    
-        <div class="video-corinthians"> <!-- Seção de vídeos fora do grid -->
-            <h2 class="titulo-video">Assista aos Melhores Momentos de Internacional x Criciuma</h2>
-            <iframe src="https://www.youtube.com/watch?v=bvYp7ORMVrs&pp=ygUeZ2UgbWVsaG9yZXMgbW9tZW50b3MgY3JpY2l1bWFd" 
-                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-                clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <section class="noticia">
+        <h2>Flamengo e Bahia ficam no empate pela 10ª rodada do Brasileirão</h2>
+        <p class="data">Publicado em: 8 de Novembro de 2024</p>
+        <img src="/static/imagens/flamengo.JPG" alt="Jogo Corinthians x Flamengo">
+        <p>Em jogo no maracana lotado, futebol apresentado não empolga e ficam apenas no 1x1. O empate não foi de boa valia para nenhum dos clubes na tabela</p>
+        
+        <div id="detalhes" class="detalhes-noticia">
+            <p>Em jogo morno, flamengo e Bahia ficam apenas no 1x1.</p>
+            <p>O empate não foi de boa valia para nenhum dos clubes na tabela</p>
         </div>
-    
-    </main>
-    
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Notícias de Futebol - Todos os direitos reservados.</p>
+    </footer>
+
 </body>
 </html>
